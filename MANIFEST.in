@@ -1,0 +1,3 @@
+include infinit/config/deployment.ini_tmpl
+recursive-include infinit/public *
+recursive-include infinit/templates *

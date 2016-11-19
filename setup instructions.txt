@@ -1,0 +1,4 @@
+> python 2.7
+> easy_install pylons
+> easy_install mysql-python
+> easy_install SQLAlchemy
