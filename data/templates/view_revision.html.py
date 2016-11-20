@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1479592202.488
+_modified_time = 1479617624.662
 _enable_loop = True
 _template_filename = 'D:/EngineeringWorkspace/Infinit/infinit/templates/view_revision.html'
 _template_uri = '/view_revision.html'
@@ -20,13 +20,15 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         r = context.get('r', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer(u'<html>\r\n<head>\r\n    <title>Infinit - ')
+        __M_writer(u"\r\n<h1>Revision: <a href='/view/component/")
+        __M_writer(escape(r.component_id))
+        __M_writer(u"'>")
+        __M_writer(escape(r.component.name))
+        __M_writer(u'</a> - ')
         __M_writer(escape(r.name))
-        __M_writer(u'</title>\r\n</head>\r\n<body>\r\n    <h1>r: ')
-        __M_writer(escape(r.name))
-        __M_writer(u'</h1>\r\n    <p>')
+        __M_writer(u'</h1>\r\n<p>')
         __M_writer(escape(r.description))
-        __M_writer(u'</p>\r\n</body>\r\n</html>')
+        __M_writer(u'</p>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -34,6 +36,6 @@ def render_body(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"35": 29, "17": 0, "23": 1, "24": 3, "25": 3, "26": 6, "27": 6, "28": 7, "29": 7}, "uri": "/view_revision.html", "filename": "D:/EngineeringWorkspace/Infinit/infinit/templates/view_revision.html"}
+{"source_encoding": "utf-8", "line_map": {"37": 31, "17": 0, "23": 1, "24": 2, "25": 2, "26": 2, "27": 2, "28": 2, "29": 2, "30": 3, "31": 3}, "uri": "/view_revision.html", "filename": "D:/EngineeringWorkspace/Infinit/infinit/templates/view_revision.html"}
 __M_END_METADATA
 """

@@ -1,31 +1,25 @@
-<html>
-<head>
-    <title>Infinit - ${component.name}</title>
-</head>
-<body>
-    <h1>Component: ${component.name}</h1>
-    <table>
-    	<thead>
-    		<tr>
-    			<td>
-    				Revision
-    			</td><td>
-    				Part
-    			</td>
-    		</tr>
-    	</thead>
-    	% for revision in revisions:
-    	  	<tr>
-    	  		<td>
-    	  			<a href="/view/revision/${revision.id}">${revision.name}</a>
-    	  		</td>
-    	  		% for part in revision.parts:
-    	  			<td>
-    	  				<a href="/view/part/${part.id}">#${part.id}</a>
-    	  			</td>
-    	  		% endfor
-    	  	</tr>
-    	% endfor
-    </table>
-</body>
-</html>
+
+<h1>Component: ${component.name}</h1>
+<table>
+	<thead>
+		<tr>
+			<td>
+				Revision
+			</td><td>
+				Part
+			</td>
+		</tr>
+	</thead>
+	% for revision in revisions:
+	  	<tr>
+	  		<td>
+	  			<a href="/view/revision/${revision.id}">${revision.name}</a>
+	  		</td>
+	  		% for part in revision.parts:
+	  			<td>
+	  				<a href="/view/part/${part.id}">#${part.id}</a>
+	  			</td>
+	  		% endfor
+	  	</tr>
+	% endfor
+</table>

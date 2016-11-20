@@ -27,7 +27,7 @@ class ViewController(BaseController):
         component = query.filter(Component.id==kwargs['id']).one()
         
 
-        return render('/view_component.html', extra_vars={'component': component, 'revisions':component.revisions})
+        return render('/layout.html', extra_vars={'content':render('/view_component.html', extra_vars={'component': component, 'revisions':component.revisions})})
       except NoResultFound:
         return 'No component found!'
     
@@ -36,7 +36,7 @@ class ViewController(BaseController):
         query = meta.Session.query(Revision)
         revision = query.filter(Revision.id==kwargs['id']).one()
 
-        return render('/view_revision.html', extra_vars={'r': revision})
+        return render('/layout.html', extra_vars={'content':render('/view_revision.html', extra_vars={'r': revision})})
       except NoResultFound:
         return 'No revision found!'
     
