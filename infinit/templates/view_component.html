@@ -1,25 +1,44 @@
-
 <h1>Component: ${component.name}</h1>
-<table>
-	<thead>
-		<tr>
-			<td>
-				Revision
-			</td><td>
-				Part
-			</td>
-		</tr>
-	</thead>
-	% for revision in revisions:
-	  	<tr>
-	  		<td>
-	  			<a href="/view/revision/${revision.id}">${revision.name}</a>
-	  		</td>
-	  		% for part in revision.parts:
-	  			<td>
-	  				<a href="/view/part/${part.id}">#${part.id}</a>
-	  			</td>
-	  		% endfor
-	  	</tr>
-	% endfor
-</table>
+<div class="uk-panel uk-panel-box uk-panel-box-primary">
+  <h3>Description:</h3>
+  <p class="uk-text-primary">${component.description}</p>
+</div>
+
+% if len(component.revisions) > 0:
+  <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">
+    <caption>Revisions of this component</caption>
+    <thead>
+      <tr>
+        <th>
+          Revision
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Parts
+        </th>
+      </tr>
+    </thead>
+    % for revision in revisions:
+      <tr onclick="window.document.location='/view/revision/${revision.id}';">
+        <td>
+          <a>${revision.name}</a>
+        </td>
+        <td>
+          <a>${ (revision.description[:18] + '..') if len(revision.description) > 20 else revision.description}</a>
+        </td>
+        
+        <td>
+        % for part in revision.parts:
+          
+            <a href="/view/part/${part.id}">#${part.id}</a>
+          
+        % endfor
+        </td>
+      </tr>
+    % endfor
+  </table>
+% else:
+  <div class="uk-alert uk-alert-warning">No revisions were found for this component.</div>
+% endif

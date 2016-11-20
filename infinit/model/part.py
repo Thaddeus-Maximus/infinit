@@ -13,7 +13,7 @@ class Part(Base):
   id = Column(Integer, primary_key=True)
   revision_id = Column(Integer, ForeignKey('revision.id'))
 
-  description = Column(String(100))
+  description = Column(String(100), default='')
 
   revision = relationship("Revision", lazy='joined')
   installations = relationship("Installation", lazy='joined')
@@ -23,12 +23,16 @@ class Part(Base):
     self.total_events = self.events
     self.drive_time = timedelta(0)
     for event in self.events:
-      self.drive_time = self.drive_time + event.end - event.start
+      if (event.end != None):
+        self.drive_time = self.drive_time + event.end - event.start
     for installation in self.installations:
       for event in installation.assembly.events:
-        if (event.start >= installation.start and event.end <= installation.end):
-          self.total_events.append(event)
-          self.drive_time = self.drive_time + event.end - event.start
+        if (event.start >= installation.start):
+          if (event.end == None and event.start<=installation.end):
+            self.total_events.append(event)
+          elif (event.end<=installation.end):
+            self.total_events.append(event)
+            self.drive_time = self.drive_time + event.end - event.start
 
 
 

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1479617527.591
+_modified_time = 1479657098.3
 _enable_loop = True
 _template_filename = 'D:/EngineeringWorkspace/Infinit/infinit/templates/layout.html'
 _template_uri = '/layout.html'
@@ -20,7 +20,7 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         content = context.get('content', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer(u'\r\n<html>\r\n<head>\r\n<link rel="stylesheet" href="/css/uikit.css">\r\n</head>\r\n<body>\r\n<div class="uk-container">\r\n<nav class="uk-navbar uk-margin-large-bottom">\r\n    <a class="uk-navbar-brand uk-hidden-small" href="layouts_frontpage.html">Infinit</a>\r\n    <ul class="uk-navbar-nav uk-hidden-small">\r\n        <li>\r\n            <a href="layouts_frontpage.html">Parts</a>\r\n        </li>\r\n        <li>\r\n            <a href="layouts_portfolio.html">Assemblies</a>\r\n        </li>\r\n        <li>\r\n            <a href="layouts_blog.html">Events</a>\r\n        </li>\r\n    </ul>\r\n    <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>\r\n    <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>\r\n</nav>\r\n\r\n')
+        __M_writer(u'\r\n<html>\r\n<head>\r\n<link rel="stylesheet" href="/css/uikit.almost-flat.css">\r\n</head>\r\n<body>\r\n<div class="uk-container">\r\n<nav class="uk-navbar uk-margin-large-bottom">\r\n    <a class="uk-navbar-brand uk-hidden-small" href="layouts_frontpage.html">Infinit</a>\r\n    <ul class="uk-navbar-nav uk-hidden-small">\r\n        <li>\r\n            <a href="layouts_frontpage.html">Parts</a>\r\n        </li>\r\n        <li>\r\n            <a href="layouts_portfolio.html">Assemblies</a>\r\n        </li>\r\n        <li>\r\n            <a href="layouts_blog.html">Events</a>\r\n        </li>\r\n    </ul>\r\n    <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>\r\n    <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>\r\n</nav>\r\n\r\n')
         __M_writer(escape(content))
         __M_writer(u'\r\n\r\n</div>\r\n</body>\r\n</html>')
         return ''

@@ -1,3 +1,53 @@
 
 <h1>Revision: <a href='/view/component/${r.component_id}'>${r.component.name}</a> - ${r.name}</h1>
-<p>${r.description}</p>
+<div class="uk-panel uk-panel-box uk-panel-box-primary">
+  <h3>Description:</h3>
+  <p class="uk-text-primary">${r.description}</p>
+</div>
+<br/>
+<div class="uk-panel uk-panel-box">
+  <h3>Component Description:</h3>
+  <p class="uk-text-primary">${r.component.description}</p>
+</div>
+
+% if len(r.parts) > 0:
+  <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">
+    <caption>Parts of this revision</caption>
+    <thead>
+      <tr>
+        <th>
+          Part
+        </th><th>
+          Drive Hours
+        </th><th>
+          Status
+        </th><th>
+          Events
+        </th>
+      </tr>
+    </thead>
+    % for part in r.parts:
+      <!--${part.computeEvents()}-->
+      <tr onclick="window.document.location='/view/part/${part.id}';">
+        <td>
+          <a>#${part.id}</a>
+        </td>
+        <td>
+          ${"{0:.1f}".format(part.drive_time.total_seconds()/3600)}
+        </td>
+        <td>
+          <!--Status-->
+        </td>
+        <td>
+        % for event in part.total_events:
+          
+            <a href="/view/event/${event.id}">${(event.description[:18] + '..') if len(event.description) > 20 else event.description}</a>
+          
+        % endfor
+        </td>
+      </tr>
+    % endfor
+  </table>
+% else:
+  <div class="uk-alert uk-alert-warning">No parts were found for this revision.</div>
+% endif

@@ -27,7 +27,7 @@ class ViewController(BaseController):
         component = query.filter(Component.id==kwargs['id']).one()
         
 
-        return render('/layout.html', extra_vars={'content':render('/view_component.html', extra_vars={'component': component, 'revisions':component.revisions})})
+        return render('/layout.html', extra_vars={'content':render('/view_component.html', extra_vars={'component': component, 'revisions': component.revisions})})
       except NoResultFound:
         return 'No component found!'
     
@@ -36,7 +36,7 @@ class ViewController(BaseController):
         query = meta.Session.query(Revision)
         revision = query.filter(Revision.id==kwargs['id']).one()
 
-        return render('/layout.html', extra_vars={'content':render('/view_revision.html', extra_vars={'r': revision})})
+        return render('/layout.html', extra_vars={'content': render('/view_revision.html', extra_vars={'r': revision}) })
       except NoResultFound:
         return 'No revision found!'
     
@@ -45,7 +45,9 @@ class ViewController(BaseController):
         query = meta.Session.query(Part)
         part = query.filter(Part.id==kwargs['id']).one()
         part.computeEvents()
+        part.total_events.sort(key=lambda x: x.start, reverse=True)
+        part.installations.sort(key=lambda x: x.start, reverse=True)
 
-        return repr(part.total_events); #render('/view_part.html', extra_vars={'r': revision})
+        return render('/layout.html', extra_vars={'content': render('/view_part.html', extra_vars={'part': part}) })
       except NoResultFound:
         return 'No part found!'

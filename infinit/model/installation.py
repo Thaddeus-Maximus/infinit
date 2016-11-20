@@ -15,6 +15,8 @@ class Installation(Base):
     start = Column(DateTime)
     end = Column(DateTime)
 
+    description = Column(String(100), default='')
+
     assembly = relationship("Assembly", lazy='joined')
     part = relationship("Part", lazy='joined')
 
@@ -22,6 +24,7 @@ class Installation(Base):
         self.part_id=part_id
         self.assembly_id=assembly_id
         self.start=start;
+        self.description=description
         self.end=end;
 
     def __repr__(self):

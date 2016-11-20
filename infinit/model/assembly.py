@@ -11,7 +11,7 @@ class Assembly(Base):
     id = Column(Integer, primary_key=True)
 
     name = Column(String(100))
-    description = Column(String(100))
+    description = Column(String(100), default='')
 
     events = relationship("Event", lazy='joined')
 
