@@ -18,6 +18,8 @@
         <th>
           Part
         </th><th>
+          Description
+        </th><th>
           Drive Hours
         </th><th>
           Status
@@ -31,6 +33,9 @@
       <tr onclick="window.document.location='/view/part/${part.id}';">
         <td>
           <a>#${part.id}</a>
+        </td>
+        <td>
+          <a>${(part.description[:18] + '..') if len(part.description) > 20 else part.description}</a>
         </td>
         <td>
           ${"{0:.1f}".format(part.drive_time.total_seconds()/3600)}

@@ -2,7 +2,7 @@
   Part:
   <a href='/view/component/${part.revision.component.id}'>${part.revision.component.name}</a>
   - <a href='/view/revision/${part.revision.id}'>${part.revision.name}</a>
-  - ${part.description}
+  - #${part.id}
 </h1>
 
 <div class="uk-panel uk-panel-box uk-panel-box-primary">
@@ -12,7 +12,7 @@
 
 % if len(part.installations) > 0:
   <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">
-    <caption>Events</caption>
+    <caption>Installations</caption>
     <thead>
       <tr>
         <th>

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1479663983.977
+_modified_time = 1479665208.294
 _enable_loop = True
 _template_filename = 'D:/EngineeringWorkspace/Infinit/infinit/templates/view_revision.html'
 _template_uri = '/view_revision.html'
@@ -33,7 +33,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(r.component.description))
         __M_writer(u'</p>\r\n</div>\r\n\r\n')
         if len(r.parts) > 0:
-            __M_writer(u'  <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">\r\n    <caption>Parts of this revision</caption>\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          Part\r\n        </th><th>\r\n          Drive Hours\r\n        </th><th>\r\n          Status\r\n        </th><th>\r\n          Events\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n')
+            __M_writer(u'  <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">\r\n    <caption>Parts of this revision</caption>\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          Part\r\n        </th><th>\r\n          Description\r\n        </th><th>\r\n          Drive Hours\r\n        </th><th>\r\n          Status\r\n        </th><th>\r\n          Events\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n')
             for part in r.parts:
                 __M_writer(u'      <!--')
                 __M_writer(escape(part.computeEvents()))
@@ -41,6 +41,8 @@ def render_body(context,**pageargs):
                 __M_writer(escape(part.id))
                 __M_writer(u'\';">\r\n        <td>\r\n          <a>#')
                 __M_writer(escape(part.id))
+                __M_writer(u'</a>\r\n        </td>\r\n        <td>\r\n          <a>')
+                __M_writer(escape((part.description[:18] + '..') if len(part.description) > 20 else part.description))
                 __M_writer(u'</a>\r\n        </td>\r\n        <td>\r\n          ')
                 __M_writer(escape("{0:.1f}".format(part.drive_time.total_seconds()/3600)))
                 __M_writer(u'\r\n        </td>\r\n        <td>\r\n          <!--Status-->\r\n        </td>\r\n        <td>\r\n')
@@ -61,6 +63,6 @@ def render_body(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"17": 0, "24": 1, "25": 2, "26": 2, "27": 2, "28": 2, "29": 2, "30": 2, "31": 5, "32": 5, "33": 10, "34": 10, "35": 13, "36": 14, "37": 29, "38": 30, "39": 30, "40": 30, "41": 31, "42": 31, "43": 33, "44": 33, "45": 36, "46": 36, "47": 42, "48": 43, "49": 44, "50": 44, "51": 44, "52": 44, "53": 47, "54": 50, "55": 51, "56": 52, "62": 56}, "uri": "/view_revision.html", "filename": "D:/EngineeringWorkspace/Infinit/infinit/templates/view_revision.html"}
+{"source_encoding": "utf-8", "line_map": {"17": 0, "24": 1, "25": 2, "26": 2, "27": 2, "28": 2, "29": 2, "30": 2, "31": 5, "32": 5, "33": 10, "34": 10, "35": 13, "36": 14, "37": 31, "38": 32, "39": 32, "40": 32, "41": 33, "42": 33, "43": 35, "44": 35, "45": 38, "46": 38, "47": 41, "48": 41, "49": 47, "50": 48, "51": 49, "52": 49, "53": 49, "54": 49, "55": 52, "56": 55, "57": 56, "58": 57, "64": 58}, "uri": "/view_revision.html", "filename": "D:/EngineeringWorkspace/Infinit/infinit/templates/view_revision.html"}
 __M_END_METADATA
 """

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1479664320.692
+_modified_time = 1479665159.884
 _enable_loop = True
 _template_filename = 'D:/EngineeringWorkspace/Infinit/infinit/templates/view_part.html'
 _template_uri = '/view_part.html'
@@ -29,13 +29,13 @@ def render_body(context,**pageargs):
         __M_writer(escape(part.revision.id))
         __M_writer(u"'>")
         __M_writer(escape(part.revision.name))
-        __M_writer(u'</a>\r\n  - ')
-        __M_writer(escape(part.description))
+        __M_writer(u'</a>\r\n  - #')
+        __M_writer(escape(part.id))
         __M_writer(u'\r\n</h1>\r\n\r\n<div class="uk-panel uk-panel-box uk-panel-box-primary">\r\n  <h3>Description:</h3>\r\n  <p class="uk-text-primary">')
         __M_writer(escape(part.description))
         __M_writer(u'</p>\r\n</div>\r\n\r\n')
         if len(part.installations) > 0:
-            __M_writer(u'  <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">\r\n    <caption>Events</caption>\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          Assembly\r\n        </th><th>\r\n          Date On\r\n        </th><th>\r\n          Date Off\r\n        </th><th>\r\n          Description\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n')
+            __M_writer(u'  <table class="uk-table uk-table-striped uk-table-hover uk-table-condensed">\r\n    <caption>Installations</caption>\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          Assembly\r\n        </th><th>\r\n          Date On\r\n        </th><th>\r\n          Date Off\r\n        </th><th>\r\n          Description\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n')
             for installation in part.installations:
                 __M_writer(u'      <tr onclick="window.document.location=\'/view/event/')
                 __M_writer(escape(installation.id))
