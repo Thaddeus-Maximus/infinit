@@ -24,4 +24,4 @@ class Event(Base):
         self.end=end;
 
     def __repr__(self):
-        return "Event('%s')" % self.name
+        return "Event('%s')" % self.description

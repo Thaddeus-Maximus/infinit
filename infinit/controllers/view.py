@@ -23,12 +23,29 @@ class ViewController(BaseController):
     # meta.Session.commit()
     if kwargs['type'] == 'component':
       try:
-        component_query = meta.Session.query(Component)
-        component = component_query.filter(Component.id==kwargs['id']).one()
-        # find parts
+        query = meta.Session.query(Component)
+        component = query.filter(Component.id==kwargs['id']).one()
+        
 
-
-        return render('/view.html', extra_vars={'component': component, 'revisions':component.revisions})
+        return render('/view_component.html', extra_vars={'component': component, 'revisions':component.revisions})
       except NoResultFound:
         return 'No component found!'
-      
+    
+    elif kwargs['type'] == 'revision':
+      try:
+        query = meta.Session.query(Revision)
+        revision = query.filter(Revision.id==kwargs['id']).one()
+
+        return render('/view_revision.html', extra_vars={'r': revision})
+      except NoResultFound:
+        return 'No revision found!'
+    
+    elif kwargs['type'] == 'part':
+      try:
+        query = meta.Session.query(Part)
+        part = query.filter(Part.id==kwargs['id']).one()
+        part.computeEvents()
+
+        return repr(part.total_events); #render('/view_part.html', extra_vars={'r': revision})
+      except NoResultFound:
+        return 'No part found!'

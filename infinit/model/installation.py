@@ -1,6 +1,7 @@
 """Installation model"""
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.types import Integer, String, DateTime
+from sqlalchemy.orm import relationship
 
 from infinit.model.meta import Base
 
@@ -14,6 +15,9 @@ class Installation(Base):
     start = Column(DateTime)
     end = Column(DateTime)
 
+    assembly = relationship("Assembly", lazy='joined')
+    part = relationship("Part", lazy='joined')
+
     def __init__(self, part_id=0, assembly_id=0, description='', start=None, end=None):
         self.part_id=part_id
         self.assembly_id=assembly_id
@@ -21,4 +25,4 @@ class Installation(Base):
         self.end=end;
 
     def __repr__(self):
-        return "Installation('%s')" % self.name
+        return "Installation(%s->%s #%s)" % (self.part_id, self.assembly_id, self.id)

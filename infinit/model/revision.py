@@ -16,6 +16,7 @@ class Revision(Base):
     description = Column(String(100))
 
     parts = relationship("Part", lazy='joined')
+    component = relationship("Component", lazy='joined')
 
 
     def __init__(self, component_id=0, name=0, description='', start=None, end=None):
